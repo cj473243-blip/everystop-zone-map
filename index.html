@@ -198,12 +198,9 @@ function saveZones() {
 
   if (window.parent && window.parent.postMessage) {
     window.parent.postMessage({
-      type: 'zonesSelected',
-      zones: zones,
-      zonesString: zonesStr
-    }, '*');
-  }
-
+  type: "zonesSelected",
+  zonesString: zones.join(",")
+}, "*");
   
   try {
     window.location.hash = encodeURIComponent(zonesStr);
