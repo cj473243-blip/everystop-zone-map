@@ -164,6 +164,9 @@ L.geoJSON(GEOJSON_DATA, {
   onEachFeature
 }).addTo(map);
 
+
+
+
 // ── Toggle zone ───────────────────────────────────────────────────────────────
 function toggleZone(name, layer) {
   if (selectedZones.has(name)) {
@@ -198,9 +201,12 @@ function saveZones() {
 
   if (window.parent && window.parent.postMessage) {
     window.parent.postMessage({
-  type: "zonesSelected",
-  zonesString: zones.join(",")
-}, "*");
+      type: 'zonesSelected',
+      zones: zones,
+      zonesString: zonesStr
+    }, '*');
+  }
+
   
   try {
     window.location.hash = encodeURIComponent(zonesStr);
